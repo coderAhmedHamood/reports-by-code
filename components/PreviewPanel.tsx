@@ -3,9 +3,11 @@
 import { useReportStore } from '@/lib/store';
 import { replaceVariables } from '@/lib/utils';
 import { FiEdit2 } from 'react-icons/fi';
+import ServiceReportHeader from './ServiceReportHeader';
 
 export default function PreviewPanel() {
-  const { currentDocument, selectedSection, setSelectedSection, previewMode } = useReportStore();
+  const { currentDocument, selectedSection, setSelectedSection, previewMode } =
+    useReportStore();
 
   if (!currentDocument) return null;
 
@@ -335,6 +337,8 @@ export default function PreviewPanel() {
     );
   };
 
+  const isServiceReport = currentDocument.templateId === 'service-report-001';
+
   return (
     <div className="max-w-4xl mx-auto">
       <div
@@ -347,8 +351,16 @@ export default function PreviewPanel() {
           direction: 'rtl',
         }}
       >
-        {currentDocument.sections.map(renderSection)}
+        {isServiceReport && <ServiceReportHeader />}
+        {currentDocument.sections.map((section: any) => {
+          // إخفاء العنوان النصي الافتراضي إذا استخدمنا رأس مخصص
+          if (isServiceReport && section.id === 'header-1') {
+            return null;
+          }
+          return renderSection(section);
+        })}
       </div>
     </div>
   );
 }
+
