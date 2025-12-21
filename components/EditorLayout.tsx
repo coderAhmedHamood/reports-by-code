@@ -17,12 +17,30 @@ export default function EditorLayout() {
 
   if (!currentDocument) return null;
 
+  const [isGenerating, setIsGenerating] = useState(false);
+
   const handleGeneratePDF = async () => {
     try {
-      await downloadPDF(currentDocument, `${currentDocument.name}.pdf`);
+      setIsGenerating(true);
+      
+      // البحث عن عنصر المعاينة
+      const previewElement = document.querySelector('[data-preview-container]') as HTMLElement;
+      
+      if (!previewElement) {
+        alert('لم يتم العثور على عنصر المعاينة');
+        setIsGenerating(false);
+        return;
+      }
+
+      // استخدام html2canvas مباشرة
+      const { generatePDFFromElement } = await import('@/lib/pdfGenerator');
+      await generatePDFFromElement(previewElement, `${currentDocument.name}.pdf`);
+      
+      setIsGenerating(false);
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('حدث خطأ أثناء إنشاء PDF');
+      alert('حدث خطأ أثناء إنشاء PDF: ' + (error as Error).message);
+      setIsGenerating(false);
     }
   };
 
@@ -60,10 +78,11 @@ export default function EditorLayout() {
             </button>
             <button
               onClick={handleGeneratePDF}
-              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center gap-2 transition-colors"
+              disabled={isGenerating}
+              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg flex items-center gap-2 transition-colors"
             >
               <FiDownload className="w-4 h-4" />
-              تصدير PDF
+              {isGenerating ? 'جاري التصدير...' : 'تصدير PDF'}
             </button>
           </div>
         </div>

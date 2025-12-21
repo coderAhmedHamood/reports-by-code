@@ -338,11 +338,13 @@ export default function PreviewPanel() {
   return (
     <div className="max-w-4xl mx-auto">
       <div
+        data-preview-container
         className="bg-white shadow-lg rounded-lg p-12"
         style={{
           minHeight: '297mm',
           width: '210mm',
           margin: '0 auto',
+          direction: 'rtl',
         }}
       >
         {currentDocument.sections.map(renderSection)}
