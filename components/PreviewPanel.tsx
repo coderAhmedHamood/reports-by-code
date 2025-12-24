@@ -4,6 +4,7 @@ import { useReportStore } from '@/lib/store';
 import { replaceVariables } from '@/lib/utils';
 import { FiEdit2 } from 'react-icons/fi';
 import ServiceReportHeader from './ServiceReportHeader';
+import CustomerInformationSection from './CustomerInformationSection';
 
 export default function PreviewPanel() {
   const { currentDocument, selectedSection, setSelectedSection, previewMode } =
