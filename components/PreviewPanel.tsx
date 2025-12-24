@@ -5,6 +5,9 @@ import { replaceVariables } from '@/lib/utils';
 import { FiEdit2 } from 'react-icons/fi';
 import ServiceReportHeader from './ServiceReportHeader';
 import CustomerInformationSection from './CustomerInformationSection';
+import ActivityAndRisksSection from './ActivityAndRisksSection';
+import ReportSections from './ReportSections';
+import SignatureSection from './SignatureSection';
 
 export default function PreviewPanel() {
   const { currentDocument, selectedSection, setSelectedSection, previewMode } =
@@ -354,6 +357,9 @@ export default function PreviewPanel() {
       >
         {isServiceReport && <ServiceReportHeader />}
         {isServiceReport && <CustomerInformationSection />}
+        {isServiceReport && <ActivityAndRisksSection />}
+        {isServiceReport && <ReportSections />}
+        {isServiceReport && <SignatureSection />}
         {currentDocument.sections.map((section: any) => {
           // إخفاء الأقسام المخصصة إذا استخدمنا مكونات مخصصة
           if (isServiceReport) {
@@ -363,7 +369,14 @@ export default function PreviewPanel() {
               section.id === 'customer-basic' ||
               section.id === 'treatment-type' ||
               section.id === 'pests-table-header' ||
-              section.id === 'pests-table'
+              section.id === 'pests-table' ||
+              section.id === 'activity-level' ||
+              section.id === 'pest-risks' ||
+              section.id === 'treatment-report' ||
+              section.id === 'treatment-report-content' ||
+              section.id === 'recommendations-header' ||
+              section.id === 'recommendations-content' ||
+              section.id === 'signatures'
             ) {
               return null;
             }
