@@ -353,10 +353,20 @@ export default function PreviewPanel() {
         }}
       >
         {isServiceReport && <ServiceReportHeader />}
+        {isServiceReport && <CustomerInformationSection />}
         {currentDocument.sections.map((section: any) => {
-          // إخفاء العنوان النصي الافتراضي إذا استخدمنا رأس مخصص
-          if (isServiceReport && section.id === 'header-1') {
-            return null;
+          // إخفاء الأقسام المخصصة إذا استخدمنا مكونات مخصصة
+          if (isServiceReport) {
+            if (
+              section.id === 'header-1' ||
+              section.id === 'customer-header' ||
+              section.id === 'customer-basic' ||
+              section.id === 'treatment-type' ||
+              section.id === 'pests-table-header' ||
+              section.id === 'pests-table'
+            ) {
+              return null;
+            }
           }
           return renderSection(section);
         })}

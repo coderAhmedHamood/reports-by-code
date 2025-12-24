@@ -19,38 +19,38 @@ export default function CustomerInformationSection() {
       </div>
 
       {/* Two Column Layout */}
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-2 gap-8 mb-6">
         {/* Left Column - Customer Fields */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-xs font-medium text-gray-800 mb-1.5">
               Name / الاسم:
             </label>
-            <div className="border-b-2 border-gray-300 pb-1 min-h-[20px]">
+            <div className="border-b border-gray-400 pb-0.5 min-h-[18px] text-sm text-gray-700">
               {data.customer_name || ''}
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-xs font-medium text-gray-800 mb-1.5">
               Address / العنوان:
             </label>
-            <div className="border-b-2 border-gray-300 pb-1 min-h-[20px]">
+            <div className="border-b border-gray-400 pb-0.5 min-h-[18px] text-sm text-gray-700">
               {data.customer_address || ''}
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-xs font-medium text-gray-800 mb-1.5">
               Contract / العقد / Job No / رقم العميل:
             </label>
-            <div className="border-b-2 border-gray-300 pb-1 min-h-[20px]">
+            <div className="border-b border-gray-400 pb-0.5 min-h-[18px] text-sm text-gray-700">
               {data.job_number || ''}
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-xs font-medium text-gray-800 mb-1.5">
               Treated Areas / مناطق المعالجة:
             </label>
-            <div className="border-b-2 border-gray-300 pb-1 min-h-[20px]">
+            <div className="border-b border-gray-400 pb-0.5 min-h-[18px] text-sm text-gray-700">
               {data.treated_areas || ''}
             </div>
           </div>
@@ -58,13 +58,13 @@ export default function CustomerInformationSection() {
 
         {/* Right Column - Treatment Type */}
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-[#7dd3fc] rotate-45"></div>
-            <h4 className="text-sm font-bold text-gray-800">
+          <div className="flex items-center gap-1.5 mb-4">
+            <div className="w-1.5 h-1.5 bg-[#7dd3fc] rotate-45"></div>
+            <h4 className="text-xs font-bold text-gray-800">
               Treatment Type / نوع المعالجة
             </h4>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="radio"
@@ -72,9 +72,9 @@ export default function CustomerInformationSection() {
                 value="routine"
                 checked={data.treatment_type === 'routine'}
                 readOnly
-                className="w-4 h-4 text-[#14b8a6] border-gray-300"
+                className="w-3.5 h-3.5 text-[#14b8a6] border-gray-400"
               />
-              <span className="text-sm text-gray-700">Routine / دوري</span>
+              <span className="text-xs text-gray-700">Routine / دوري</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -83,9 +83,9 @@ export default function CustomerInformationSection() {
                 value="follow-up"
                 checked={data.treatment_type === 'follow-up'}
                 readOnly
-                className="w-4 h-4 text-[#14b8a6] border-gray-300"
+                className="w-3.5 h-3.5 text-[#14b8a6] border-gray-400"
               />
-              <span className="text-sm text-gray-700">Follow-Up / مراجعة</span>
+              <span className="text-xs text-gray-700">Follow-Up / مراجعة</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -94,9 +94,9 @@ export default function CustomerInformationSection() {
                 value="call-out"
                 checked={data.treatment_type === 'call-out'}
                 readOnly
-                className="w-4 h-4 text-[#14b8a6] border-gray-300"
+                className="w-3.5 h-3.5 text-[#14b8a6] border-gray-400"
               />
-              <span className="text-sm text-gray-700">Call-Out / مكالمة صادرة</span>
+              <span className="text-xs text-gray-700">Call-Out / مكالمة صادرة</span>
             </label>
           </div>
         </div>
@@ -111,28 +111,28 @@ export default function CustomerInformationSection() {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse border border-gray-300 text-xs">
+        <table className="w-full border-collapse border border-gray-400 text-[10px]">
           <thead>
             <tr className="bg-white">
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 Pests / الآفات
               </th>
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 <div className="flex items-center justify-end gap-1">
                   <div className="w-1.5 h-1.5 bg-[#7dd3fc] rotate-45"></div>
                   <span>Level of Activity / مستوى النشاط</span>
                 </div>
               </th>
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 Treatment/Control / المعالجة/التحكم
               </th>
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 Materials Used / الأدوات التي تم استخدامها
               </th>
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 Qty / العدد
               </th>
-              <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-800">
+              <th className="border border-gray-400 px-2 py-2 text-right font-semibold text-gray-800 text-[10px]">
                 Units / الوحدات
               </th>
             </tr>
@@ -141,23 +141,23 @@ export default function CustomerInformationSection() {
             {Array.from({ length: 5 }).map((_, idx) => {
               const rowData = data.pests_data?.[idx] || [];
               return (
-                <tr key={idx}>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                <tr key={idx} className="hover:bg-gray-50">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700 min-h-[30px]">
                     {rowData[0] || ''}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700">
                     {rowData[1] || ''}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700">
                     {rowData[2] || ''}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700">
                     {rowData[3] || ''}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700">
                     {rowData[4] || ''}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
+                  <td className="border border-gray-400 px-2 py-2 text-right text-[10px] text-gray-700">
                     {rowData[5] || ''}
                   </td>
                 </tr>
